@@ -28,7 +28,7 @@ impl EventHandler<GameError> for State {
 	}
 
 	fn draw(&mut self, ctx: &mut ggez::Context) -> GameResult {
-		graphics::clear(ctx, Color::WHITE);
+		graphics::clear(ctx, Color::BLACK);
 
 		for x in 0..BOARD_SIZE.0 {
 			for y in 0..BOARD_SIZE.1 {
