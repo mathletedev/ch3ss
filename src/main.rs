@@ -49,7 +49,7 @@ impl EventHandler<GameError> for State {
 						&self.sprite_sheet,
 						DrawParam::default()
 							.src(Rect {
-								x: if (x + y) % 2 == 0 { 0.5 } else { 0.0 },
+								x: if (x + y + z) % 2 == 0 { 0.5 } else { 0.0 },
 								y: 0.0,
 								w: 0.5,
 								h: 1.0,
