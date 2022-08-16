@@ -100,7 +100,6 @@ impl EventHandler<GameError> for State {
 		_repeat: bool,
 	) {
 		match keycode {
-			KeyCode::Space => self.animation_init = timer::time_since_start(ctx).as_secs_f32(),
 			KeyCode::Key0 => {
 				self.animation_init = timer::time_since_start(ctx).as_secs_f32();
 				self.focused_layer = -1;
