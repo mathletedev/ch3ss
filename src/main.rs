@@ -11,6 +11,7 @@ use ggez::{
 const WINDOW_SIZE: (f32, f32) = (800.0, 800.0);
 const BOARD_SIZE: (usize, usize, usize) = (8, 8, 4);
 const TILE_SIZE: (f32, f32) = (64.0, 64.0);
+const SPRITESHEET_SIZE: f32 = 14.0;
 const ANIMATION_SPEED: f32 = 8.0;
 const ANIMATION_SCALE: f32 = 32.0;
 const HIDDEN_OPACITY: f32 = 0.1;
@@ -49,9 +50,13 @@ impl EventHandler<GameError> for State {
 						&self.sprite_sheet,
 						DrawParam::default()
 							.src(Rect {
-								x: if (x + y + z) % 2 == 0 { 0.5 } else { 0.0 },
+								x: if (x + y + z) % 2 == 0 {
+									12.0 / SPRITESHEET_SIZE
+								} else {
+									13.0 / SPRITESHEET_SIZE
+								},
 								y: 0.0,
-								w: 0.5,
+								w: 1.0 / SPRITESHEET_SIZE,
 								h: 1.0,
 							})
 							.dest(Point2 {
