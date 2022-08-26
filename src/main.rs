@@ -1,18 +1,14 @@
-use ggez::{conf::WindowMode, event, ContextBuilder, GameResult};
-
+pub mod config;
 pub mod lib;
-
-use crate::lib::{constants::WINDOW_SIZE, state::State};
+use crate::{config::WINDOW_SIZE, lib::state::State};
+use ggez::{conf::WindowMode, event, ContextBuilder, GameResult};
 
 fn main() -> GameResult {
 	let (mut ctx, event_loop) = ContextBuilder::new("CH3SS", "mathletedev")
 		.window_mode(WindowMode::default().dimensions(WINDOW_SIZE.0, WINDOW_SIZE.1))
 		.build()?;
 
-	let mut state = State::new(&mut ctx).unwrap();
-
-	state.board[0][0][0] = 0;
-	state.board[3][4][2] = 5;
+	let state = State::new(&mut ctx).unwrap();
 
 	event::run(ctx, event_loop, state);
 }

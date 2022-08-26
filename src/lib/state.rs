@@ -1,10 +1,10 @@
+use super::{setup::setup_board, utils::draw_sprite};
+use crate::config::BOARD_SIZE;
 use ggez::{
 	event::{self, EventHandler, KeyCode},
 	graphics::{self, Color, Image},
 	timer, Context, GameError, GameResult,
 };
-
-use super::{constants::BOARD_SIZE, utils::draw_sprite};
 
 pub struct State {
 	pub board: Vec<Vec<Vec<i8>>>,
@@ -16,7 +16,7 @@ pub struct State {
 impl State {
 	pub fn new(ctx: &mut Context) -> GameResult<State> {
 		Ok(State {
-			board: vec![vec![vec![-1; BOARD_SIZE.2]; BOARD_SIZE.1]; BOARD_SIZE.0],
+			board: setup_board(),
 			sprite_sheet: Image::new(ctx, "/spritesheet.png")?,
 			focused_layer: -1,
 			animation_init: f32::MAX,

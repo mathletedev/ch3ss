@@ -1,14 +1,12 @@
-use std::f32::consts::PI;
-
+use crate::config::{
+	ANIMATION_SCALE, ANIMATION_SPEED, HIDDEN_OPACITY, SPRITESHEET_SIZE, TILE_SIZE, WINDOW_SIZE,
+};
 use ggez::{
 	graphics::{self, Color, DrawParam, Image, Rect},
 	mint::Point2,
 	Context, GameResult,
 };
-
-use super::constants::{
-	ANIMATION_SCALE, ANIMATION_SPEED, HIDDEN_OPACITY, SPRITESHEET_SIZE, TILE_SIZE, WINDOW_SIZE,
-};
+use std::f32::consts::PI;
 
 pub fn draw_sprite(
 	ctx: &mut Context,
@@ -40,7 +38,7 @@ pub fn draw_sprite(
 						((elapsed * ANIMATION_SPEED + ((x + y) as f32) * PI / 14.0).sin()
 							* ANIMATION_SCALE)
 							.min(0.0)
-					} - if (sprite as f32) < SPRITESHEET_SIZE * 0.5 {
+					} - if (sprite as f32) < SPRITESHEET_SIZE - 2.0 {
 					TILE_SIZE.1 * 0.5
 				} else {
 					0.0
